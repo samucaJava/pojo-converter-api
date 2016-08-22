@@ -12,3 +12,4 @@ API para converter POJOs para outros formatos, como exemplo para JSON.
 
 # Importante
 A API está preparada para converter POJO para JSON. Futuramente serão incluidas possiblidade de conversão para outros formatos, como XML e CSV.
+
