@@ -10,8 +10,7 @@ public class ConcreteConverterFactoryTest {
 
 	@Test
 	public void mustReturnAnInstanceOfPojoToJSON() {
-		ConverterFactory converterFactory = new ConcreteConverterFactory();
-		PojoConverter pojoConverter = converterFactory.getConverter("JSON");
+		PojoConverter pojoConverter = ConcreteConverterFactory.getInstance().getConverter(Type.JSON);
 
 		assertEquals(PojoToJSON.class.getName(), pojoConverter.getClass().getName());
 
@@ -19,8 +18,7 @@ public class ConcreteConverterFactoryTest {
 
 	@Test
 	public void mustReturnNullBecauseParameterIsInvalid() {
-		ConverterFactory converterFactory = new ConcreteConverterFactory();
-		PojoConverter pojoConverter = converterFactory.getConverter("XXX");
+		PojoConverter pojoConverter = ConcreteConverterFactory.getInstance().getConverter(Type.CVS);
 
 		assertNull(pojoConverter);
 	}

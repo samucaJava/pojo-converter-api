@@ -16,7 +16,7 @@ public class PojoToJSON implements PojoConverter {
 		try {
 			outputStream.write(converter(obj).getBytes());
 		} catch (IOException e) {
-			System.out.println("Error converting POJO to JSON");
+			throw new RuntimeException(e);
 		}
 		return outputStream;
 	}
@@ -26,7 +26,7 @@ public class PojoToJSON implements PojoConverter {
 		try {
 			outputStream.write(converter(objs).getBytes());
 		} catch (IOException e) {
-			System.out.println("Error converting POJO to JSON");
+			throw new RuntimeException(e);
 		}
 		return outputStream;
 	}
@@ -61,10 +61,8 @@ public class PojoToJSON implements PojoConverter {
 						}
 					}
 				}
-			} catch (IllegalArgumentException e) {
-				e.printStackTrace();
-			} catch (IllegalAccessException e) {
-				e.printStackTrace();
+			} catch (Exception e) {
+				throw new RuntimeException(e);
 			}
 		}
 

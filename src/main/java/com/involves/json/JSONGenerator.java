@@ -1,7 +1,6 @@
 package com.involves.json;
 
 import java.lang.reflect.Field;
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
@@ -282,16 +281,8 @@ public class JSONGenerator {
 						childField.getName().substring(0, 1).toUpperCase()));
 				JSONSimpleData jsonSimpleData = new JSONSimpleData(childField.getName(), method.invoke(value));
 				jsonSimpleDatas.add(jsonSimpleData);
-			} catch (IllegalAccessException e) {
-				e.printStackTrace();
-			} catch (IllegalArgumentException e) {
-				e.printStackTrace();
-			} catch (InvocationTargetException e) {
-				e.printStackTrace();
-			} catch (NoSuchMethodException e) {
-				e.printStackTrace();
-			} catch (SecurityException e) {
-				e.printStackTrace();
+			} catch (Exception e) {
+				throw new RuntimeException(e);
 			}
 
 		}
